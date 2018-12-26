@@ -1,38 +1,54 @@
 import React from "react";
-import pf from "petfinder-client";
+import pf, { Pet as PetType } from "petfinder-client";
+import { RouteComponentProps } from "@reach/router";
 import Pet from "./Pet";
 import SearchBox from "./SearchBox";
-import { connect } from "react-redux";
+import { Consumer } from "./SearchContext";
+
+if (!process.env.API_KEY || !process.env.API_SECRET) {
+  throw new Error("no API keys");
+}
 
 const petfinder = pf({
   key: process.env.API_KEY,
   secret: process.env.API_SECRET
 });
 
-class Results extends React.Component {
+interface Props {
+  searchParams: {
+    location: string;
+    animal: string;
+    breed: string;
+  };
+}
+
+interface State {
+  pets: PetType[];
+}
+class Results extends React.Component<Props & RouteComponentProps, State> {
   //gets called once per component
   //props immutable, state is changeable
   //state stays at the same level
   //state = things that can change
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       pets: []
     };
   }
-  componentDidMount() {
+  public componentDidMount() {
     this.search();
   }
-  search = () => {
+  public search = () => {
     petfinder.pet
       .find({
         output: "full",
-        location: this.props.location,
-        animal: this.props.animal,
-        breed: this.props.breed
+        location: this.props.searchParams.location,
+        animal: this.props.searchParams.animal,
+        breed: this.props.searchParams.breed
       })
       .then(data => {
-        let pets;
+        let pets: PetType[];
         if (data.petfinder.pets && data.petfinder.pets.pet) {
           if (Array.isArray(data.petfinder.pets.pet)) {
             pets = data.petfinder.pets.pet;
@@ -46,7 +62,7 @@ class Results extends React.Component {
         this.setState({ pets }); //could be pets: pets
       });
   };
-  render() {
+  public render() {
     return (
       <div className="search">
         <SearchBox search={this.search} />
@@ -74,11 +90,10 @@ class Results extends React.Component {
   }
 }
 
-//injects location as a prop to context which then passes to Results
-const mapStateToProps = ({ location, breed, animal }) => ({
-  location,
-  breed,
-  animal
-});
-//connects results to react store
-export default connect(mapStateToProps)(Results);
+export default function ResultsWithContext(props: RouteComponentProps) {
+  return (
+    <Consumer>
+      {context => <Results {...props} searchParams={context} />}
+    </Consumer>
+  );
+}

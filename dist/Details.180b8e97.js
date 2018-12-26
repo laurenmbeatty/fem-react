@@ -217,77 +217,83 @@ function (_React$Component) {
 
 var _default = Carousel;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"Modal.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"Modal.tsx":[function(require,module,exports) {
 "use strict";
+
+var __extends = this && this.__extends || function () {
+  var _extendStatics = function extendStatics(d, b) {
+    _extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) {
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+      }
+    };
+
+    return _extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    _extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
 
 Object.defineProperty(exports, "__esModule", {
   value: true
-});
-exports.default = void 0;
+}); // taken from React docs
 
-var _react = _interopRequireDefault(require("react"));
+var react_1 = __importDefault(require("react"));
 
-var _reactDom = require("react-dom");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+var react_dom_1 = require("react-dom");
 
 var modalRoot = document.getElementById("modal");
 
 var Modal =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Modal, _React$Component);
+/** @class */
+function (_super) {
+  __extends(Modal, _super);
 
-  function Modal(props) {
-    var _this;
+  function Modal() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _classCallCheck(this, Modal);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Modal).call(this, props));
     _this.el = document.createElement("div");
     return _this;
   }
 
-  _createClass(Modal, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+  Modal.prototype.componentDidMount = function () {
+    if (modalRoot) {
       modalRoot.appendChild(this.el);
     }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
+  };
+
+  Modal.prototype.componentWillUnmount = function () {
+    if (modalRoot) {
       modalRoot.removeChild(this.el);
     }
-  }, {
-    key: "render",
-    value: function render() {
-      return (0, _reactDom.createPortal)(this.props.children, this.el);
-    }
-  }]);
+  };
+
+  Modal.prototype.render = function () {
+    return react_dom_1.createPortal(this.props.children, this.el);
+  };
 
   return Modal;
-}(_react.default.Component);
+}(react_1.default.Component);
 
-var _default = Modal;
-exports.default = _default;
+exports.default = Modal;
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js"}],"Details.js":[function(require,module,exports) {
 "use strict";
 
@@ -436,7 +442,7 @@ function (_React$Component) {
 
 var _default = Details;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-loadable":"../node_modules/react-loadable/lib/index.js","./Carousel":"Carousel.js","./Modal":"Modal.js","_bundle_loader":"../node_modules/parcel-bundler/src/builtins/bundle-loader.js","./AdoptModalContent":[["AdoptModalContent.74779901.js","AdoptModalContent.js"],"AdoptModalContent.74779901.map","AdoptModalContent.js"]}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-loadable":"../node_modules/react-loadable/lib/index.js","./Carousel":"Carousel.js","./Modal":"Modal.tsx","_bundle_loader":"../node_modules/parcel-bundler/src/builtins/bundle-loader.js","./AdoptModalContent":[["AdoptModalContent.74779901.js","AdoptModalContent.js"],"AdoptModalContent.74779901.map","AdoptModalContent.js"]}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -463,7 +469,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56760" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57398" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

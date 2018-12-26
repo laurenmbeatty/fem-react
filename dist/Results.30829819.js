@@ -438,8 +438,6 @@ var _Pet = _interopRequireDefault(require("./Pet"));
 
 var _SearchBox = _interopRequireDefault(require("./SearchBox"));
 
-var _reactRedux = require("react-redux");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -548,25 +546,11 @@ function (_React$Component) {
   }]);
 
   return Results;
-}(_react.default.Component); //injects location as a prop to context which then passes to Results
+}(_react.default.Component);
 
-
-var mapStateToProps = function mapStateToProps(_ref) {
-  var location = _ref.location,
-      breed = _ref.breed,
-      animal = _ref.animal;
-  return {
-    location: location,
-    breed: breed,
-    animal: animal
-  };
-}; //connects results to react store
-
-
-var _default = (0, _reactRedux.connect)(mapStateToProps)(Results);
-
+var _default = Results;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","./Pet":"Pet.js","./SearchBox":"SearchBox.js","react-redux":"../node_modules/react-redux/es/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","./Pet":"Pet.js","./SearchBox":"SearchBox.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -593,7 +577,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56760" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57398" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

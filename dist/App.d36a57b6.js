@@ -28717,161 +28717,7 @@ var _Context = require("./components/Context");
 var _connect = _interopRequireDefault(require("./connect/connect"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./components/Provider":"../node_modules/react-redux/es/components/Provider.js","./components/connectAdvanced":"../node_modules/react-redux/es/components/connectAdvanced.js","./components/Context":"../node_modules/react-redux/es/components/Context.js","./connect/connect":"../node_modules/react-redux/es/connect/connect.js"}],"../node_modules/redux-thunk/es/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-function createThunkMiddleware(extraArgument) {
-  return function (_ref) {
-    var dispatch = _ref.dispatch,
-        getState = _ref.getState;
-    return function (next) {
-      return function (action) {
-        if (typeof action === 'function') {
-          return action(dispatch, getState, extraArgument);
-        }
-
-        return next(action);
-      };
-    };
-  };
-}
-
-var thunk = createThunkMiddleware();
-thunk.withExtraArgument = createThunkMiddleware;
-var _default = thunk;
-exports.default = _default;
-},{}],"reducers/location.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = locationReducer;
-
-function locationReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Minneapolis, MN";
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  if (action.type === "SET_LOCATION") {
-    return action.payload;
-  } else {
-    return state;
-  }
-}
-},{}],"reducers/animal.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = animalReducer;
-
-function animalReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  if (action.type === "SET_ANIMAL") {
-    return action.payload;
-  } else {
-    return state;
-  }
-}
-},{}],"reducers/breed.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = breedReducer;
-
-function breedReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  if (action.type === "SET_BREED") {
-    return action.payload;
-  } else if (action.type === "SET_ANIMAL") {
-    return "";
-  } else {
-    return state;
-  }
-}
-},{}],"reducers/breeds.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = breedsReducer;
-
-function breedsReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  if (action.type === "SET_BREEDS") {
-    return action.payload;
-  } else {
-    return state;
-  }
-}
-},{}],"reducers/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _redux = require("redux");
-
-var _location = _interopRequireDefault(require("./location"));
-
-var _animal = _interopRequireDefault(require("./animal"));
-
-var _breed = _interopRequireDefault(require("./breed"));
-
-var _breeds = _interopRequireDefault(require("./breeds"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//combine reducers helps us keep everything in order
-var _default = (0, _redux.combineReducers)({
-  location: _location.default,
-  animal: _animal.default,
-  breed: _breed.default,
-  breeds: _breeds.default
-});
-
-exports.default = _default;
-},{"redux":"../node_modules/redux/es/redux.js","./location":"reducers/location.js","./animal":"reducers/animal.js","./breed":"reducers/breed.js","./breeds":"reducers/breeds.js"}],"../store.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _redux = require("redux");
-
-var _reduxThunk = _interopRequireDefault(require("redux-thunk"));
-
-var _reducers = _interopRequireDefault(require("./src/reducers"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var store = (0, _redux.createStore)(_reducers.default, (0, _redux.compose)((0, _redux.applyMiddleware)(_reduxThunk.default), (typeof window === "undefined" ? "undefined" : _typeof(window)) === "object" && typeof window.devToolsExtension !== "undefined" ? window.devToolsExtension() : function (f) {
-  return f;
-}));
-var _default = store;
-exports.default = _default;
-},{"redux":"../node_modules/redux/es/redux.js","redux-thunk":"../node_modules/redux-thunk/es/index.js","./src/reducers":"reducers/index.js"}],"../node_modules/@emotion/memoize/dist/memoize.browser.esm.js":[function(require,module,exports) {
+},{"./components/Provider":"../node_modules/react-redux/es/components/Provider.js","./components/connectAdvanced":"../node_modules/react-redux/es/components/connectAdvanced.js","./components/Context":"../node_modules/react-redux/es/components/Context.js","./connect/connect":"../node_modules/react-redux/es/connect/connect.js"}],"../node_modules/@emotion/memoize/dist/memoize.browser.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31127,8 +30973,6 @@ var _reactLoadable = _interopRequireDefault(require("react-loadable"));
 
 var _reactRedux = require("react-redux");
 
-var _store = _interopRequireDefault(require("../store"));
-
 var _NavBar = _interopRequireDefault(require("./NavBar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -31182,17 +31026,74 @@ var App =
 function (_React$Component) {
   _inherits(App, _React$Component);
 
-  function App() {
+  function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+
+    _this.handleLocationChange = function (event) {
+      _this.setState({
+        location: event.target.value
+      });
+    };
+
+    _this.handleAnimalChange = function (event) {
+      _this.setState({
+        animal: event.target.value
+      }, _this.getBreeds);
+    };
+
+    _this.handleBreedChange = function (event) {
+      _this.setState({
+        breed: event.target.value
+      });
+    };
+
+    _this.state = {
+      location: "Seattle, WA",
+      animal: "",
+      breed: "",
+      breeds: [],
+      handleAnimalChange: _this.handleAnimalChange,
+      handleBreedChange: _this.handleBreedChange,
+      handleLocationChange: _this.handleLocationChange,
+      getBreeds: _this.getBreeds
+    };
+    return _this;
   }
 
   _createClass(App, [{
+    key: "getBreeds",
+    value: function getBreeds() {
+      var _this2 = this;
+
+      if (this.state.animal) {
+        petfinder.breed.list({
+          animal: this.state.animal
+        }).then(function (data) {
+          if (data.petfinder && data.petfinder.breeds && Array.isArray(data.petfinder.breeds.breed)) {
+            _this2.setState({
+              breeds: data.petfinder.breeds.breed
+            });
+          } else {
+            _this2.setState({
+              breeds: []
+            });
+          }
+        }).catch(console.error);
+      } else {
+        this.setState({
+          breeds: []
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement("div", null, _react.default.createElement(_NavBar.default, null), _react.default.createElement(_reactRedux.Provider, {
-        store: _store.default
+        value: this.state
       }, _react.default.createElement(_router.Router, null, _react.default.createElement(LoadableResults, {
         path: "/"
       }), _react.default.createElement(LoadableDetails, {
@@ -31207,7 +31108,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 (0, _reactDom.render)(_react.default.createElement(App, null), document.getElementById("root"));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-loadable":"../node_modules/react-loadable/lib/index.js","react-redux":"../node_modules/react-redux/es/index.js","../store":"../store.js","./NavBar":"NavBar.js","_bundle_loader":"../node_modules/parcel-bundler/src/builtins/bundle-loader.js","./Details":[["Details.180b8e97.js","Details.js"],"Details.180b8e97.map","Details.js"],"./Results":[["Results.30829819.js","Results.js"],"Results.30829819.map","Results.js"]}],"../node_modules/process/browser.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-loadable":"../node_modules/react-loadable/lib/index.js","react-redux":"../node_modules/react-redux/es/index.js","./NavBar":"NavBar.js","_bundle_loader":"../node_modules/parcel-bundler/src/builtins/bundle-loader.js","./Details":[["Details.180b8e97.js","Details.js"],"Details.180b8e97.map","Details.js"],"./Results":[["Results.30829819.js","Results.js"],"Results.30829819.map","Results.js"]}],"../node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -31695,7 +31596,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56760" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57398" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
